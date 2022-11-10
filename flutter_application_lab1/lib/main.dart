@@ -31,18 +31,50 @@ class _RootPageState extends State<RootPage> {
         appBar: AppBar(
           title: const Text("Lab1 using flutter"),
         ),
-        body: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: (1 / .4),
-          primary: false,
-          padding: const EdgeInsets.all(20),
-          children: const <Widget>[
-            ButtonWidget(),
-            ButtonWidget(),
-            ButtonWidget(),
-            ButtonWidget()
+        body: Column(
+          children: <Widget>[
+            const Expanded(child: ImageWidget()),
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: (1 / .4),
+                primary: false,
+                padding: const EdgeInsets.all(20),
+                children: const <Widget>[
+                  ButtonWidget(),
+                  ButtonWidget(),
+                  ButtonWidget(),
+                  ButtonWidget()
+                ],
+              ),
+            ),
+            const Expanded(
+              child: SizedBox(
+                width: 100,
+                child: TextField(
+                  decoration: InputDecoration(
+                    alignLabelWithHint: true,
+                    border: UnderlineInputBorder(),
+                    labelText: 'Email',
+                  ),
+                  style: TextStyle(fontSize: 14),
+                ),
+              ),
+            ),
           ],
         ));
+  }
+}
+
+class ImageWidget extends StatelessWidget {
+  const ImageWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(36),
+      child: Image.asset('assets/images/piechart.png'),
+    );
   }
 }
 
